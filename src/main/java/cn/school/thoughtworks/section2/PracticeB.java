@@ -5,15 +5,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
 public class PracticeB {
+
+    Map<String, Integer> countSameElements(List<String> collection1) {
+        Map<String, Integer> result = new HashMap<>();
+        for (String charItemStr : collection1) {
+            CharItem charItemObj = CharItem.createChByStr(charItemStr);
+            String ch = charItemObj.getCh();
+            Integer count = charItemObj.getCount();
+            result.put(ch, result.get(ch) == null ? count : result.get(ch) + count);
+        }
+        return result;
+    }
+}
+
+/*public class PracticeB {
     Map<String, Integer> countSameElements(List<String> collection1) {
         //实现练习要求，并改写该行代码。
         Map<String, Integer> num = new HashMap<String, Integer>();
         int i=0;
         while (i<collection1.size()){
             String key = collection1.get(i);
-            if (key.length()<=1) {
+            if (key.length()==1) {
                 int finalI = i;
                 num.put(key, collection1.stream().filter(elem -> collection1.get(finalI) == elem).collect(Collectors.toList()).size());
                 i += num.get(key);
@@ -31,4 +44,4 @@ public class PracticeB {
     }
         return num;
 }
-}
+}*/

@@ -9,7 +9,17 @@ import java.util.stream.Collectors;
 public class PracticeC {
     Map<String, Integer> countSameElements(List<String> collection1) {
         //实现练习要求，并改写该行代码。
-        Map<String, Integer> num = new HashMap<String, Integer>();
+
+        Map<String, Integer> result = new HashMap<>();
+        for (String charItemStr : collection1) {
+            CharItem charItemObj = CharItem.createChByStr(charItemStr);
+            String ch = charItemObj.getCh();
+            Integer count = charItemObj.getCount();
+            result.put(ch, result.get(ch) == null ? count : result.get(ch) + count);
+        }
+        return result;
+
+        /*Map<String, Integer> num = new HashMap<String, Integer>();
         List<String> lo = new ArrayList<>();
         for (String s : collection1) {
             if (s.length() > 1) {
@@ -40,6 +50,6 @@ public class PracticeC {
                 ++i;
             }
         }
-        return num;
+        return num;*/
     }
 }

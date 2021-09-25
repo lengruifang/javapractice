@@ -19,6 +19,7 @@ public class CharItem {
         this.ch = ch;
         this.count = count;
     }
+
     public String getCh() {
         return ch;
     }
